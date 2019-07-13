@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import { HomePage } from "./HomePage";
+import { AddCard } from "./AddCard";
+import { UpdateCard } from "./UpdateCard";
+import { SearchForCard } from "./SearchForCard";
+import "./styles.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <>
+        <main className="container">
+          <Route path="/" exact component={HomePage} />
+          <Route path="/card/add" exact component={AddCard} />
+          <Route path="/card/update" exact component={UpdateCard} />
+          <Route path="/card/search" exact component={SearchForCard} />
+        </main>
+      </>
+    );
+  }
 }
-
-export default App;

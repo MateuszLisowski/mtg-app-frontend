@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9d2d3;
+  font-family: "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar {
+  background-color: #f9d2d3;
+  color: black;
+  padding: 6px 10px;
+  width: 20em;
+  border: none;
+  border-bottom: black solid 2px;
+
+  font-size: 1em;
+  font-weight: bold;
+  transition: width 0.5s;
+}
+
+.searchbar::placeholder {
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.searchbar:focus {
+  width: 30em;
+  font-weight: bold;
+  outline: none;
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  transition: box-shadow 0.2s ease-in-out, color 0.1s ease-in-out;
+  outline: none;
+}
+
+.btn:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+  color: #f9d2d3;
+}
+
+.search-buttons {
+  display: flex;
+}
