@@ -19,6 +19,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #5d2c2c;
 }
 
 .searchbar {
