@@ -1,11 +1,10 @@
 
 import React from 'react'
 
-export const AddCard = () => {
+export const UpdateCard = () => {
   return (
     <>
-      dfsdfdf
+      dummy code
     </>
   )
 }
-

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import { HomePage } from "./HomePage";
-import { AddCard } from "./AddCard";
-import { UpdateCard } from "./UpdateCard";
-import { SearchForCard } from "./SearchForCard";
-import "./styles.css";
+import { HomePage } from "../views/HomePage";
+import { AddCard } from "../views/AddCard";
+import { UpdateCard } from "../views/UpdateCard";
+import { SearchForCard } from "../views/SearchForCard";
 
-export class App extends Component {
+export class AppRoutes extends Component {
   render() {
     return (
       <>
