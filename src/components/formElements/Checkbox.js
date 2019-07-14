@@ -1,16 +1,14 @@
 import React from "react";
 
-export const TextInput = ({ name, label, placeholder, onChange, value }) => {
+export const Checkbox = ({ name, label, onChange, value }) => {
   return (
     <>
       <label htmlFor={label}>
         {name}
         <input
-          className="searchbar"
-          type="text"
-          placeholder={placeholder}
+          // className="searchbar"
+          type="checkbox"
           name={label}
-          required
           onChange={event => onChange(event, label)}
           value={value}
         />

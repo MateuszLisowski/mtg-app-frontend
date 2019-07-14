@@ -1,18 +1,19 @@
 import React from "react";
 
-export const TextInput = ({ name, label, placeholder, onChange, value }) => {
+export const NumberInput = ({ name, label, placeholder, onChange, value }) => {
   return (
     <>
       <label htmlFor={label}>
         {name}
         <input
-          className="searchbar"
-          type="text"
+          // className="searchbar"
+          type="number"
           placeholder={placeholder}
           name={label}
-          required
           onChange={event => onChange(event, label)}
-          value={value}
+          checked={value}
+          min="-10"
+          max="25"
         />
       </label>
     </>

@@ -1,13 +1,13 @@
 import React from "react";
 
-export const TextInput = ({ name, label, placeholder, onChange, value }) => {
+export const Textarea = ({ name, label, placeholder, onChange, value }) => {
   return (
     <>
       <label htmlFor={label}>
         {name}
-        <input
-          className="searchbar"
-          type="text"
+        <textarea
+          // className="searchbar"
+          type="textarea"
           placeholder={placeholder}
           name={label}
           required
