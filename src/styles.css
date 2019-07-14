@@ -20,9 +20,10 @@ a {
   justify-content: center;
   align-items: center;
   color: #5d2c2c;
+  width: 70vw;
 }
 
-.searchbar {
+.textInput {
   background-color: #f9d2d3;
   color: black;
   padding: 6px 10px;
@@ -32,18 +33,15 @@ a {
 
   font-size: 1em;
   font-weight: bold;
-  transition: width 0.5s;
 }
 
-.searchbar::placeholder {
+.textInput::placeholder {
   color: black;
   font-size: 1em;
   font-weight: bold;
 }
 
-.searchbar:focus {
-  width: 30em;
-  font-weight: bold;
+.textInput:focus {
   outline: none;
 }
 
@@ -73,6 +71,93 @@ a {
   color: #f9d2d3;
 }
 
+.textArea {
+  background-color: #f9d2d3;
+  color: black;
+  padding: 20px 10px;
+  width: 20em;
+  border: none;
+  border-bottom: black solid 2px;
+  outline: none;
+
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.textArea::placeholder {
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .search-buttons {
   display: flex;
+}
+
+.flexCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.flexHorizontal {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.marginMedium {
+  margin: 1em 0 1.5em 0;
+}
+
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.checkbox:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: -4px;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.checkbox:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+
+.numberInput {
+  text-align: center;
+  background-color: #f9d2d3;
+  color: black;
+  padding: 10px 40px;
+  border: black solid 2px;
+  outline: none;
+  margin-bottom: 0;
+
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.numberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

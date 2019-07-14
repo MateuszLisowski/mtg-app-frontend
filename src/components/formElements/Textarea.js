@@ -3,10 +3,10 @@ import React from "react";
 export const Textarea = ({ name, label, placeholder, onChange, value }) => {
   return (
     <>
-      <label htmlFor={label}>
+      <label htmlFor={label} className="flexCentered marginMedium">
         {name}
         <textarea
-          // className="searchbar"
+          className="textArea"
           type="textarea"
           placeholder={placeholder}
           name={label}

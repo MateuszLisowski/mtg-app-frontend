@@ -1,14 +1,13 @@
 import React from "react";
 
-export const NumberInput = ({ name, label, placeholder, onChange, value }) => {
+export const NumberInput = ({ name, label, onChange, value }) => {
   return (
     <>
-      <label htmlFor={label}>
+      <label htmlFor={label} className="flexCentered marginMedium">
         {name}
         <input
-          // className="searchbar"
+          className="numberInput marginMedium"
           type="number"
-          placeholder={placeholder}
           name={label}
           onChange={event => onChange(event, label)}
           checked={value}
