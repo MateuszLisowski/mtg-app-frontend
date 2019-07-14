@@ -4,13 +4,31 @@ import { CardForm } from "../components/CardForm";
 import { defaultOptions } from "../constants/toastifyOptions";
 
 export class AddCard extends Component {
-  addCard = async cardData => {
+  state = {
+    name: "",
+    types: "",
+    keywords: "",
+    text: "",
+    tournamentLegal: false,
+    attack: null,
+    defense: null
+  };
+
+  handleInput = (event, inputName) => {
+    const { value, type, checked } = event.target;
+
+    this.setState({
+      [inputName]: type === "checkbox" ? checked : value
+    });
+  };
+
+  addCard = async () => {
     fetch("http://localhost:3000/card/add", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify(cardData)
+      body: JSON.stringify(this.state)
     })
       .then(res => res.json())
       .then(({ message, status }) => {
@@ -24,10 +42,30 @@ export class AddCard extends Component {
   };
 
   render() {
+    const {
+      name,
+      types,
+      keywords,
+      text,
+      tournamentLegal,
+      attack,
+      defense,
+    } = this.state;
     return (
       <>
         <h1>Fill form below to add card to database</h1>
-        <CardForm onClick={this.addCard} buttonText={"Add card"} />
+        <CardForm
+          onClick={this.addCard}
+          buttonText={"Add card"}
+          handleInput={this.handleInput}
+          name={name}
+          types={types}
+          keywords={keywords}
+          text={text}
+          tournamentLegal={tournamentLegal}
+          attack={attack}
+          defense={defense}
+        />
       </>
     );
   }
