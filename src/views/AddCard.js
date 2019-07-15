@@ -32,7 +32,7 @@ export class AddCard extends Component {
     })
       .then(res => res.json())
       .then(({ message, status }) => {
-        status === 400
+        status === 400 || status === 500
           ? toast.error(message, defaultOptions)
           : toast.success("Card added to database", defaultOptions);
       })
@@ -49,7 +49,7 @@ export class AddCard extends Component {
       text,
       tournamentLegal,
       attack,
-      defense,
+      defense
     } = this.state;
     return (
       <>

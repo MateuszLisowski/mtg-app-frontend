@@ -36,7 +36,7 @@ export class UpdateCard extends Component {
     })
       .then(res => res.json())
       .then(({ message, status, card }) => {
-        if (!status || status === 400) {
+        if (!status || status === 400 || status === 500) {
           toast.error("something went wrong please try again", defaultOptions);
         } else {
           const {
@@ -73,22 +73,46 @@ export class UpdateCard extends Component {
   };
 
   updateCard = async () => {
-    // fetch("http://localhost:3000/card/add", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json"
-    //   },
-    //   body: JSON.stringify(this.state)
-    // })
-    //   .then(res => res.json())
-    //   .then(({ message, status }) => {
-    //     status === 400
-    //       ? toast.error(message, defaultOptions)
-    //       : toast.success("Card added to database", defaultOptions);
-    //   })
-    //   .catch(err => {
-    //     toast.error(err, defaultOptions);
-    //   });
+    const {
+      foundCardId,
+      name,
+      types,
+      keywords,
+      text,
+      tournamentLegal,
+      attack,
+      defense
+    } = this.state;
+
+    if (!foundCardId) {
+      toast.error("Please first search for a card", defaultOptions);
+    } else {
+      fetch("http://localhost:3000/card/update", {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          foundCardId,
+          name,
+          types,
+          keywords,
+          text,
+          tournamentLegal,
+          attack,
+          defense
+        })
+      })
+        .then(res => res.json())
+        .then(({ message, status }) => {
+          status === 400 || status === 500
+            ? toast.error(message, defaultOptions)
+            : toast.success(message, defaultOptions);
+        })
+        .catch(err => {
+          toast.error(err, defaultOptions);
+        });
+    }
   };
 
   render() {
