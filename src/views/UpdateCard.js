@@ -13,7 +13,8 @@ export class UpdateCard extends Component {
     tournamentLegal: false,
     attack: null,
     defense: null,
-    searchedCard: ""
+    searchedCard: "",
+    foundCardId: null
   };
 
   handleInput = (event, inputName) => {
@@ -22,6 +23,53 @@ export class UpdateCard extends Component {
     this.setState({
       [inputName]: type === "checkbox" ? checked : value
     });
+  };
+
+  searchForCard = () => {
+    const { searchedCard } = this.state;
+
+    fetch("http://localhost:3000/card/getCard/" + searchedCard, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(({ message, status, card }) => {
+        if (!status || status === 400) {
+          toast.error("something went wrong please try again", defaultOptions);
+        } else {
+          const {
+            _id,
+            name,
+            types,
+            keywords,
+            text,
+            tournamentLegal,
+            attack,
+            defense
+          } = card;
+
+          this.setState(
+            {
+              foundCardId: _id,
+              name,
+              types,
+              keywords,
+              text,
+              tournamentLegal,
+              attack,
+              defense
+            },
+            () => {
+              toast.success(message, defaultOptions);
+            }
+          );
+        }
+      })
+      .catch(error => {
+        toast.error(error, defaultOptions);
+      });
   };
 
   updateCard = async () => {
@@ -65,8 +113,8 @@ export class UpdateCard extends Component {
         />
         <button
           className="btn"
-          // onClick={() => onClick(this.state)}
-          // disabled={isDisabled}
+          onClick={this.searchForCard}
+          disabled={!searchedCard}
         >
           Search for a card
         </button>
