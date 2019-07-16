@@ -65,6 +65,7 @@ export class AddCard extends Component {
           tournamentLegal={tournamentLegal}
           attack={attack}
           defense={defense}
+          isDisabled={!Boolean(name && types && text)}
         />
       </>
     );

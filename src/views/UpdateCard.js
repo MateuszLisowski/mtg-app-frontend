@@ -105,9 +105,12 @@ export class UpdateCard extends Component {
       })
         .then(res => res.json())
         .then(({ message, status }) => {
-          status === 400 || status === 500
-            ? toast.error(message, defaultOptions)
-            : toast.success(message, defaultOptions);
+          if (status === 400 || status === 500) {
+            toast.error(message, defaultOptions);
+          } else {
+            toast.success(message, defaultOptions);
+            this.setState({ foundCardId: null });
+          }
         })
         .catch(err => {
           toast.error(err, defaultOptions);
@@ -124,7 +127,8 @@ export class UpdateCard extends Component {
       tournamentLegal,
       attack,
       defense,
-      searchedCard
+      searchedCard,
+      foundCardId
     } = this.state;
     return (
       <>
@@ -142,18 +146,21 @@ export class UpdateCard extends Component {
         >
           Search for a card
         </button>
-        <CardForm
-          onClick={this.updateCard}
-          buttonText={"Update card"}
-          handleInput={this.handleInput}
-          name={name}
-          types={types}
-          keywords={keywords}
-          text={text}
-          tournamentLegal={tournamentLegal}
-          attack={attack}
-          defense={defense}
-        />
+        {foundCardId && (
+          <CardForm
+            onClick={this.updateCard}
+            buttonText={"Update card"}
+            handleInput={this.handleInput}
+            name={name}
+            types={types}
+            keywords={keywords}
+            text={text}
+            tournamentLegal={tournamentLegal}
+            attack={attack}
+            defense={defense}
+            isDisabled={!Boolean(name && types && text)}
+          />
+        )}
       </>
     );
   }

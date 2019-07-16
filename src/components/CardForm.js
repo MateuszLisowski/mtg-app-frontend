@@ -14,10 +14,9 @@ export const CardForm = ({
   tournamentLegal,
   attack,
   defense,
-  handleInput
+  handleInput,
+  isDisabled
 }) => {
-  const isDisabled = !Boolean(name && types && keywords && text);
-
   return (
     <>
       <section className="flexHorizontal">
