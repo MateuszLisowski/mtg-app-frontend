@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { CardForm } from "../components/CardForm";
 import { MtgCard } from "../components/MtgCard";
-import { defaultOptions } from "../constants/toastifyOptions";
+import { defaultOptions } from "../constants/ToastifyOptions";
+import { URLS } from "../constants/ApiUrls";
 
 export class SearchForCard extends Component {
   state = {
@@ -24,7 +25,7 @@ export class SearchForCard extends Component {
     });
   };
 
-  searchForCards = async () => {
+  searchForCards = () => {
     const {
       name,
       types,
@@ -45,15 +46,12 @@ export class SearchForCard extends Component {
       defense
     };
 
-    fetch(
-      "http://localhost:3000/card/getCards/" + JSON.stringify(searchCriteria),
-      {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json"
-        }
+    fetch(`${URLS.GET_CARDS}${JSON.stringify(searchCriteria)}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json"
       }
-    )
+    })
       .then(res => res.json())
       .then(({ message, status, cards }) => {
         if (status === 400 || status === 500) {

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { CardForm } from "../components/CardForm";
 import { Search } from "../components/formElements/Search";
-import { defaultOptions } from "../constants/toastifyOptions";
+import { defaultOptions } from "../constants/ToastifyOptions";
+import { URLS } from "../constants/ApiUrls";
 
 export class UpdateCard extends Component {
   state = {
@@ -28,7 +29,7 @@ export class UpdateCard extends Component {
   searchForCard = () => {
     const { searchedCard } = this.state;
 
-    fetch("http://localhost:3000/card/getCard/" + searchedCard, {
+    fetch(`${URLS.GET_CARD}${searchedCard}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json"
@@ -72,7 +73,7 @@ export class UpdateCard extends Component {
       });
   };
 
-  updateCard = async () => {
+  updateCard = () => {
     const {
       foundCardId,
       name,
@@ -87,7 +88,7 @@ export class UpdateCard extends Component {
     if (!foundCardId) {
       toast.error("Please first search for a card", defaultOptions);
     } else {
-      fetch("http://localhost:3000/card/update", {
+      fetch(URLS.UPDATE_CARD, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json"

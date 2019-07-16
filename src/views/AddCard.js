@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { CardForm } from "../components/CardForm";
-import { defaultOptions } from "../constants/toastifyOptions";
+import { defaultOptions } from "../constants/ToastifyOptions";
+import { URLS } from "../constants/ApiUrls";
 
 export class AddCard extends Component {
   state = {
@@ -22,8 +23,8 @@ export class AddCard extends Component {
     });
   };
 
-  addCard = async () => {
-    fetch("http://localhost:3000/card/add", {
+  addCard = () => {
+    fetch(URLS.ADD_CARD, {
       method: "POST",
       headers: {
         "Content-type": "application/json"
