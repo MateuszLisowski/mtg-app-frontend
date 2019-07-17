@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { CardForm } from "../components/CardForm";
-import { defaultOptions } from "../constants/ToastifyOptions.js";
+import { defaultOptions } from "../constants/ToastifyOptions";
 import { URLS } from "../constants/ApiUrls";
 
 export class AddCard extends Component {

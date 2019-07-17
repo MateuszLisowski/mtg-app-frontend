@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { CardForm } from "../components/CardForm";
 import { MtgCard } from "../components/MtgCard";
-import { defaultOptions } from "../constants/ToastifyOptions.js";
+import { defaultOptions } from "../constants/ToastifyOptions";
 import { URLS } from "../constants/ApiUrls";
 
 export class SearchForCard extends Component {
