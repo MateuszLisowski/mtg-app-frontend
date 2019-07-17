@@ -10,7 +10,7 @@ Convention:
 - folder names: camelCase
 - react files: PascalCase
 
-TODO:
+TODO (things I'm not praud of):
 
 - Add scss and refactor css code for more readable
 - Improve responsiveness and UI (especially content which moves when element appears)
