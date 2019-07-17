@@ -96,8 +96,20 @@ export class SearchForCard extends Component {
             !name && !types && !keywords && !text && !attack && !defense
           )}
         />
-        <section className="flexHorizontal">
-          {Boolean(foundCards.length) && foundCards.map(card => <MtgCard />)}
+        <section className="flexHorizontal flexWrap marginMedium">
+          {Boolean(foundCards.length) &&
+            foundCards.map(
+              ({ attack, defense, keywords, name, text, tournamentLegal, types }) => (
+                <MtgCard
+                  attack={attack}
+                  defense={defense}
+                  keywords={keywords}
+                  name={name}
+                  text={text}
+                  types={types}
+                />
+              )
+            )}
         </section>
       </>
     );
